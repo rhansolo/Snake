@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class KeyboardEvents extends JPanel {
-    public String direction;
+    private String direction;
 	public KeyboardEvents() {
 		KeyListener listener = new MyKeyListener();
 		addKeyListener(listener);
@@ -27,20 +27,20 @@ public class KeyboardEvents extends JPanel {
 		public void keyTyped(KeyEvent e) {
 		}
 		public void keyPressed(KeyEvent e) {
-		    //String key = KeyEvent.getKeyText(e.getKeyCode());
-		    if (KeyEvent.getKeyText(e.getKeyCode()) == "Space"){
+		    String key = e.getKeyText(e.getKeyCode());
+		    if (key.equals("Space")){
 			System.exit(0);
 		    }
-		    else if (KeyEvent.getKeyText(e.getKeyCode()).equals("W") ){
+		    else if (key.equals("W")&&!direction.equals("UP")){
 			direction = "UP";
 		    }
-		    else if (KeyEvent.getKeyText(e.getKeyCode()).equals("A")){
+		    else if (key.equals("A")&&!direction.equals("LEFT")){
 			direction = "LEFT";
 		    }
-		    else if (KeyEvent.getKeyText(e.getKeyCode()).equals("S")){
+		    else if (key.equals("S")&&!direction.equals("DOWN")){
 			direction = "DOWN";
 		    }
-		    else if (KeyEvent.getKeyText(e.getKeyCode()).equals("D")){
+		    else if (key.equals("D")&&!direction.equals("RIGHT")){
 			direction = "RIGHT";
 		    }
 		    System.out.println(direction);
