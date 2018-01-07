@@ -6,7 +6,6 @@ import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-@SuppressWarnings("serial")
 public class KeyboardEvents extends JPanel {
 	
 	public KeyboardEvents() {
@@ -25,16 +24,14 @@ public class KeyboardEvents extends JPanel {
 	}
 
 	public class MyKeyListener implements KeyListener {
-		@Override
 		public void keyTyped(KeyEvent e) {
-		}f
-
-		@Overridew
+		}
 		public void keyPressed(KeyEvent e) {
+		    if (KeyEvent.getKeyText(e.getKeyCode()) == "Space"){
+			System.exit(0);
+		    }
 			System.out.println("keyPressed="+KeyEvent.getKeyText(e.getKeyCode()));
 		}
-
-		@Override
 		public void keyReleased(KeyEvent e) {
 			System.out.println("keyReleased="+KeyEvent.getKeyText(e.getKeyCode()));
 		}
