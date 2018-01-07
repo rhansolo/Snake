@@ -30,10 +30,21 @@ public class KeyboardEvents extends JPanel {
 		    if (KeyEvent.getKeyText(e.getKeyCode()) == "Space"){
 			System.exit(0);
 		    }
-			System.out.println("keyPressed="+KeyEvent.getKeyText(e.getKeyCode()));
+		    else if (KeyEvent.getKeyText(e.getKeyCode()).equals("W")){
+			System.out.println("move snake up");
+		    }
+		    else if (KeyEvent.getKeyText(e.getKeyCode()).equals("A")){
+			System.out.println("move snake left");
+		    }
+		    else if (KeyEvent.getKeyText(e.getKeyCode()).equals("S")){
+			System.out.println("move snake down");
+		    }
+		    else if (KeyEvent.getKeyText(e.getKeyCode()).equals("D")){
+			System.out.println("move snake right");
+		    }
+		      
 		}
 		public void keyReleased(KeyEvent e) {
-			System.out.println("keyReleased="+KeyEvent.getKeyText(e.getKeyCode()));
 		}
 	}
 }
