@@ -22,7 +22,7 @@ public class Entity{
 	y += yChange;
     }
     public boolean didCollide(Entity other){
-	return(this.x = other.x && this.y - other.y);
+	return(this.x == other.x && this.y ==  other.y);
     }
 }
 
