@@ -21,4 +21,8 @@ public class Entity{
 	x += xChange;
 	y += yChange;
     }
+    public boolean didCollide(Entity other){
+	return(this.x = other.x && this.y - other.y);
+    }
+}
 
