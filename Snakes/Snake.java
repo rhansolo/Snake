@@ -3,7 +3,6 @@ import java.awt.Graphics;
 
 public class Snake extends Entity{
     private int startingLength;
-    private String[] direction = {"UP","DOWN","LEFT","RIGHT"};
 
     private ArrayList<Coordinate> coordList= new ArrayList<Coordinate>(3);
     private Game game;
@@ -19,13 +18,13 @@ public class Snake extends Entity{
 
 	  @Override
 	  public void tick() {
-		    if(game.getKeyManager().up)
+	      if(game.getKeyManager().direction.equals("UP"))
 			     y -= 3;
-		    if(game.getKeyManager().down)
+	      if(game.getKeyManager().direction.equals("DOWN"))
 			     y += 3;
-		    if(game.getKeyManager().left)
+	      if(game.getKeyManager().direction.equals("LEFT"))
 			     x -= 3;
-		    if(game.getKeyManager().right)
+	      if(game.getKeyManager().direction.equals("RIGHT"))
 			     x += 3;
 	   }
 
