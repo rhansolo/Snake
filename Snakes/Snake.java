@@ -4,7 +4,8 @@ import java.awt.Graphics;
 public class Snake extends Entity{
     private int startingLength;
     private String[] direction = {"UP","DOWN","LEFT","RIGHT"};
-    private ArrayList<Segment> segmentList= new ArrayList<Segment>(3);
+
+    private ArrayList<Coordinate> coordList= new ArrayList<Coordinate>(3);
     private Game game;
 
 	  public Snake(Game game, float x, float y) {
@@ -30,7 +31,11 @@ public class Snake extends Entity{
 
 	  @Override
 	  public void render(Graphics g) {
-
+      g.setColor(Color.GREEN);
+      for (Coordinate c: coordList){
+        g.fillRect(c.x * BOX_WIDTH, c.y * BOX_HEIGHT, BOX_WIDTH, BOX_HEIGHT);
+      }
+      g.setColor(Color.BLACK);
 	  }
 
 }
