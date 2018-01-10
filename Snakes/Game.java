@@ -36,7 +36,7 @@ public class Game implements Runnable {
 
 	private void tick(){
 		KeyBoardEvents.tick();
-
+		
 	}
 
 	private void render(){
@@ -50,7 +50,7 @@ public class Game implements Runnable {
 		g.clearRect(0, 0, width, height);
 		//Draw Here!
 
-		
+
 
 		//End Drawing!
 		bs.show();
