@@ -15,17 +15,21 @@ public class Snake extends Entity{
         segmentList.set(1,new Segment(1,0));
         segmentList.set(2,new Segment(2,0));
 	  }
-
+    
 	  @Override
 	  public void tick() {
-	      if(game.getKeyManager().direction.equals("UP"))
-			     y -= 3;
-	      if(game.getKeyManager().direction.equals("DOWN"))
-			     y += 3;
-	      if(game.getKeyManager().direction.equals("LEFT"))
-			     x -= 3;
-	      if(game.getKeyManager().direction.equals("RIGHT"))
-			     x += 3;
+	    
+		  if(game.getKeyManager().direction.equals("RIGHT"))
+		      Coordinate newHead = new (coordList.get(0).getXcor+1,coordList.get(0).getYcor);
+		  else if(game.getKeyManager().direction.equals("LEFT"))
+		      Coordinate newHead = new (coordList.get(0).getXcor-1,coordList.get(0).getYcor);
+		  else if(game.getKeyManager().direction.equals("UP"))
+		      Coordinate newHead = new (coordList.get(0).getXcor,coordList.get(0).getYcor+1);
+		  else if(game.getKeyManager().direction.equals("DOWN"))
+		      Coordinate newHead = new (coordList.get(0).getXcor,coordList.get(0).getYcor-1);
+		  coordList.add(0,newHead);
+		  coordList.remove(coordList.size() - 1);
+	      }
 	   }
 
 	  @Override
