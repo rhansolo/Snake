@@ -1,4 +1,6 @@
 import java.util.*;
+import java.awt.Graphics;
+import java.awt.image.BufferStrategy;
 
 public class Game implements Runnable {
 	private Display display;
@@ -12,31 +14,35 @@ public class Game implements Runnable {
 	private BufferStrategy bs;
 	private Graphics g;
 
+	//States
+	private State gameState;
+	private State menuState;
+
 	//Input
-	private KeyBoardEvents keyManager;
+	private KeyboardEvents keyManager;
 
 	public Game(String title, int width, int height){
 		this.width = width;
 		this.height = height;
 		this.title = title;
-		keyManager = new KeyManager();
+		keyManager = new KeyboardEvents();
 	}
 
 	private void init(){
 		display = new Display(title, width, height);
 		display.getFrame().addKeyListener(keyManager);
-		Assets.init();
 
-		/*
 		gameState = new GameState(this);
-		menuState = new MenuState(this);
+		//menuState = new MenuState(this);
 		State.setState(gameState);
-		*/
+
 	}
 
 	private void tick(){
-		KeyBoardEvents.tick();
-		
+		KeyboardEvents.tick();
+		if (State.getState() != null){
+			State.getState().tick();
+		}
 	}
 
 	private void render(){
@@ -50,7 +56,8 @@ public class Game implements Runnable {
 		g.clearRect(0, 0, width, height);
 		//Draw Here!
 
-
+		if(State.getState() != null)
+			State.getState().render(g);
 
 		//End Drawing!
 		bs.show();
@@ -89,11 +96,11 @@ public class Game implements Runnable {
 			}
 		}
 
-		stop();
+		end();
 
 	}
 
-	public KeyManager getKeyManager(){
+	public KeyboardEvents getKeyManager(){
 		return keyManager;
 	}
 

@@ -1,7 +1,9 @@
-public abstract class Entity{
-    protected int x,y;
+import java.awt.Graphics;
 
-    public Entity(int x, int y){
+public abstract class Entity{
+    protected float x,y;
+
+    public Entity(float x, float y){
       this.x = x;
       this.y = y;
     }

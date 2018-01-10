@@ -1,4 +1,6 @@
 import java.util.*;
+import java.awt.Graphics;
+
 public class Snake extends Entity{
     private int startingLength;
     private String[] direction = {"UP","DOWN","LEFT","RIGHT"};
@@ -30,5 +32,5 @@ public class Snake extends Entity{
 	  public void render(Graphics g) {
 
 	  }
-  
+
 }

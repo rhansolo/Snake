@@ -1,3 +1,8 @@
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Dimension;
+
+import javax.swing.JFrame;
 public class Display {
 
 	private JFrame frame;
@@ -33,6 +38,10 @@ public class Display {
 
 	public Canvas getCanvas(){
 		return canvas;
+	}
+
+	public JFrame getFrame(){
+		return frame;
 	}
 
 
