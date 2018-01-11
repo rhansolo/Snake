@@ -1,14 +1,14 @@
 public class Coordinate{
-    int xcor;
-    int ycor;
-    public Coordinate(int x, int y){
+    double xcor;
+    double ycor;
+    public Coordinate(double x, double y){
 	this.xcor = x;
 	this.ycor = y;
     }
-    public int getXcor(){
+    public double getXcor(){
 	return this.xcor;
     }
-    public int getYcor(){
+    public double getYcor(){
 	return this.ycor;
     }
 }
