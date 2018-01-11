@@ -19,7 +19,7 @@ public class Game implements Runnable {
 	private State menuState;
 
 	//Input
-	private MyKeyListener keyManager;
+	private KeyboardEvents keyManager;
 
 	public Game(String title, int width, int height){
 		this.width = width;
@@ -118,6 +118,10 @@ public class Game implements Runnable {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+	}
+	public static void main(String[] args){
+		Game game = new Game("Snake", 640, 360);
+		game.start();
 	}
 
 }
