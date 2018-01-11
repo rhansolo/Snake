@@ -18,15 +18,15 @@ public class Snake extends Entity{
     
 	  @Override
 	  public void tick() {
-	    
+	    	Coordinate newHead;
 		  if(game.getKeyManager().direction.equals("RIGHT"))
-		      Coordinate newHead = new (coordList.get(0).getXcor+1,coordList.get(0).getYcor);
+		      newHead = new Coordinate(coordList.get(0).getXcor()+1,coordList.get(0).getYcor());
 		  else if(game.getKeyManager().direction.equals("LEFT"))
-		      Coordinate newHead = new (coordList.get(0).getXcor-1,coordList.get(0).getYcor);
+		      newHead = new Coordinate(coordList.get(0).getXcor()-1,coordList.get(0).getYcor());
 		  else if(game.getKeyManager().direction.equals("UP"))
-		      Coordinate newHead = new (coordList.get(0).getXcor,coordList.get(0).getYcor+1);
+		      newHead = new Coordinate(coordList.get(0).getXcor(),coordList.get(0).getYcor()+1);
 		  else if(game.getKeyManager().direction.equals("DOWN"))
-		      Coordinate newHead = new (coordList.get(0).getXcor,coordList.get(0).getYcor-1);
+		      newHead = new Coordinate(coordList.get(0).getXcor(),coordList.get(0).getYcor()-1);
 		  coordList.add(0,newHead);
 		  coordList.remove(coordList.size() - 1);
 	      }
