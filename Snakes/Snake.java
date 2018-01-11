@@ -30,12 +30,12 @@ public class Snake extends Entity{
 	    coordList.remove(coordList.size() - 1);
 	}
 	else if(game.getKeyManager().direction.equals("UP")){
-	    newHead = new Coordinate(coordList.get(0).getXcor(),coordList.get(0).getYcor()+1);
+	    newHead = new Coordinate(coordList.get(0).getXcor(),coordList.get(0).getYcor()-1);
 	    coordList.add(0,newHead);
 	    coordList.remove(coordList.size() - 1);
 	}
 	else if(game.getKeyManager().direction.equals("DOWN")){
-	    newHead = new Coordinate(coordList.get(0).getXcor(),coordList.get(0).getYcor()-1);
+	    newHead = new Coordinate(coordList.get(0).getXcor(),coordList.get(0).getYcor()+1);
 	    coordList.add(0,newHead);
 	    coordList.remove(coordList.size() - 1);
 	}
