@@ -5,16 +5,16 @@ import java.awt.Color;
 public class Snake extends Entity{
     private int startingLength;
     
-    private ArrayList<Coordinate> coordList= new ArrayList<Coordinate>(3);
+    private ArrayList<Coordinate> coordList= new ArrayList<Coordinate>();
     private Game game;
 
     public Snake(Game game, float x, float y) {
 	super(x, y);
 	this.game = game;
 	startingLength = 3;
-	coordList.set(0,new Coordinate(0,0));
-	coordList.set(1,new Coordinate(1,0));
-	coordList.set(2,new Coordinate(2,0));
+	coordList.add(0,new Coordinate(0,0));
+	coordList.add(1,new Coordinate(1,0));
+	coordList.add(2,new Coordinate(2,0));
     }
     
     public void tick() {
