@@ -3,7 +3,6 @@ import java.awt.Graphics;
 import java.awt.Color;
 
 public class Snake extends Entity{
-    private int startingLength;
     
     private ArrayList<Coordinate> coordList= new ArrayList<Coordinate>();
     private Game game;
@@ -11,10 +10,16 @@ public class Snake extends Entity{
     public Snake(Game game, double x, double y) {
 	super(x, y);
 	this.game = game;
-	startingLength = 3;
 	coordList.add(0,new Coordinate(10.0,10.0));
-	coordList.add(1,new Coordinate(11.0,10.0));
-	coordList.add(2,new Coordinate(12.0,10.0));
+	coordList.add(1,new Coordinate(110.0,10.0));
+	coordList.add(2,new Coordinate(210.0,10.0));
+	coordList.add(3, new Coordinate(310.0,10.0));
+	coordList.add(4, new Coordinate(410.0,10.0));
+	coordList.add(5, new Coordinate(510.0,10.0));			
+	coordList.add(6, new Coordinate(610.0,10.0));
+	coordList.add(7, new Coordinate(710.0,10.0));
+
+	
     }
     
     public void tick() {
@@ -43,6 +48,7 @@ public class Snake extends Entity{
     }
     public void render(Graphics g) {
 	g.setColor(Color.GREEN);
+	System.out.println(coordList.size());
 	for (Coordinate c: coordList){
 	    g.fillRect((int)c.getXcor() * 10, (int)c.getYcor() * 10, 10, 10);
 	}
