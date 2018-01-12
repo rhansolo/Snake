@@ -3,7 +3,7 @@ import java.awt.Graphics;
 
 public abstract class State {
 
-  protected Game game;
+        protected Game game;
 
 	private static State currentState = null;
 

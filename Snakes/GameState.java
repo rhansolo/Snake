@@ -1,7 +1,7 @@
 import java.awt.Graphics;
 
 public class GameState extends State{
-  private Snake player;
+        private Snake player;
 
 	public GameState(Game game){
 		super(game);

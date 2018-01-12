@@ -6,6 +6,9 @@ import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
   public class KeyboardEvents implements KeyListener {
       public String direction;
+      public KeyboardEvents(){
+	  direction = "RIGHT";
+      }
       public void keyTyped(KeyEvent e) {
       }
       public static void tick(){
