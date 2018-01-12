@@ -12,9 +12,9 @@ public class Snake extends Entity{
 	super(x, y);
 	this.game = game;
 	startingLength = 3;
-	coordList.add(0,new Coordinate(0.0,0.0));
-	coordList.add(1,new Coordinate(1.0,0.0));
-	coordList.add(2,new Coordinate(2.0,0.0));
+	coordList.add(0,new Coordinate(10.0,10.0));
+	coordList.add(1,new Coordinate(11.0,10.0));
+	coordList.add(2,new Coordinate(12.0,10.0));
     }
     
     public void tick() {
@@ -39,6 +39,7 @@ public class Snake extends Entity{
 	    coordList.add(0,newHead);
 	    coordList.remove(coordList.size() - 1);
 	}
+		checkCollision();
     }
     public void render(Graphics g) {
 	g.setColor(Color.GREEN);
@@ -46,6 +47,17 @@ public class Snake extends Entity{
 	    g.fillRect((int)c.getXcor() * 10, (int)c.getYcor() * 10, 10, 10);
 	}
 	g.setColor(Color.BLACK);
+    }
+    public void checkCollision(){
+    	int  xCor = (int)coordList.get(0).getXcor();
+    	int  yCor = (int)coordList.get(0).getYcor();
+    	System.out.println("width: " + game.width);
+    	System.out.println(xCor);
+    	System.out.println("length : " + game.height);
+    	System.out.println(yCor);
+    	if ( xCor*10 > game.width || xCor == 0 || yCor*10 > game.height || yCor == 0){
+    		System.exit(0);
+    	}
     }
     
 }
