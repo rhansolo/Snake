@@ -13,7 +13,17 @@ public class GameState extends State{
 	@Override
 	public void tick() {
 		player.tick();
-    food.tick();
+    if (player.eat(food)){
+      for (int i = 0; i < 15; i++){
+        player.grow();
+      }
+      food = new Apple(game);
+    }
+    System.out.println("Test Begin");
+    System.out.println((int)player.getCoordList().get(0).xcor);
+    System.out.println((int)player.getCoordList().get(0).ycor);
+    System.out.println(food.getXcor() / 10);
+    System.out.println(food.getYcor() / 10);
 	}
 
 	@Override

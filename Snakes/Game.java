@@ -122,7 +122,7 @@ public class Game implements Runnable {
 		}
 	}
 	public static void main(String[] args){
-		Game game = new Game("Snake", 640, 360);
+		Game game = new Game("Snake", 1040, 720);
 		game.start();
 	}
 
