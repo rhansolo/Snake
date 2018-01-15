@@ -12,7 +12,7 @@ public class Snake extends Entity{
     public Snake(Game game, int  x, int  y) {
 	super(x, y);
 	this.game = game;
-	coordList.add(0,new Coordinate(10,10));
+	coordList.add(0,new Coordinate(50,30));
 	coordList.add(1,new Coordinate(110,10));
 	coordList.add(2,new Coordinate(210,10));
 	coordList.add(3, new Coordinate(310,10));
@@ -25,12 +25,12 @@ public class Snake extends Entity{
     }
 
     public void tick() {
-      int  xCor = (int)coordList.get(0).getXcor();
+	int  xCor = (int)coordList.get(0).getXcor();
     	int  yCor = (int)coordList.get(0).getYcor();
-      for (int i = 1; i < coordList.size(); i++){
-        if ((xCor == (int)coordList.get(i).getXcor()) && (yCor == (int)coordList.get(i).getYcor())){
-          System.exit(0);
-        }
+	for (int i = 1; i < coordList.size(); i++){
+	    if ((xCor == (int)coordList.get(i).getXcor()) && (yCor == (int)coordList.get(i).getYcor())){
+		game.decreaseLife();
+	    }
       }
  	Coordinate newHead;
 	System.out.println(lastDirection);
@@ -59,7 +59,7 @@ public class Snake extends Entity{
 
 	}
 	checkCollision();
-  lastDirection = currDirection;
+	lastDirection = currDirection;
     }
     public void render(Graphics g) {
 	g.setColor(Color.GREEN);
@@ -106,20 +106,10 @@ public class Snake extends Entity{
         }
       }
       */
-      if (lastDirection.equals("RIGHT") && currDirection.equals("LEFT")){
-        System.exit(0);
-      }
-      if (lastDirection.equals("LEFT") && currDirection.equals("RIGHT")){
-        System.exit(0);
-      }
-      if (lastDirection.equals("UP") && currDirection.equals("DOWN")){
-        System.exit(0);
-      }
-      if (lastDirection.equals("DOWN") && currDirection.equals("UP")){
-        System.exit(0);
-      }
-    	if ( xCor*10 > game.width || xCor == 0 || yCor*10 > game.height || yCor == 0){
-    		System.exit(0);
+      
+      if ( xCor*10 > game.width || xCor == 0 || yCor*10 > game.height || yCor == 0){
+	  game.decreaseLife();
+	  System.out.println("decreased");
     	}
     }
 

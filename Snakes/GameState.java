@@ -7,7 +7,7 @@ public class GameState extends State{
 	public GameState(Game game){
 		super(game);
 		player = new Snake(game, 100, 100);
-    food = new Apple(game);
+		food = new Apple(game);
 	}
 
 	@Override
@@ -29,6 +29,6 @@ public class GameState extends State{
 	@Override
 	public void render(Graphics g) {
 		player.render(g);
-    food.render(g);
+		food.render(g);
 	}
 }
