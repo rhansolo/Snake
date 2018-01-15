@@ -33,7 +33,7 @@ public class Game implements Runnable {
 		display.getFrame().addKeyListener(keyManager);
 
 		gameState = new GameState(this);
-		//menuState = new MenuState(this);
+		menuState = new Menu(this);
 		State.setState(gameState);
 
 	}
@@ -46,6 +46,7 @@ public class Game implements Runnable {
 	}
 
 	private void render(){
+
 		bs = display.getCanvas().getBufferStrategy();
 		if(bs == null){
 			display.getCanvas().createBufferStrategy(3);
@@ -62,6 +63,7 @@ public class Game implements Runnable {
 		//End Drawing!
 		bs.show();
 		g.dispose();
+
 	}
 
 	public void run(){
@@ -98,6 +100,9 @@ public class Game implements Runnable {
 
 		end();
 
+	}
+	public State getGameState(){
+		return gameState;
 	}
 
 	public KeyboardEvents getKeyManager(){

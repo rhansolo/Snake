@@ -7,6 +7,7 @@ public class Snake extends Entity{
     private ArrayList<Coordinate> coordList= new ArrayList<Coordinate>();
     private Game game;
     private String lastDirection= "RIGHT";
+    private String currDirection= "RIGHT";
 
     public Snake(Game game, int  x, int  y) {
 	super(x, y);
@@ -24,36 +25,41 @@ public class Snake extends Entity{
     }
 
     public void tick() {
+      int  xCor = (int)coordList.get(0).getXcor();
+    	int  yCor = (int)coordList.get(0).getYcor();
+      for (int i = 1; i < coordList.size(); i++){
+        if ((xCor == (int)coordList.get(i).getXcor()) && (yCor == (int)coordList.get(i).getYcor())){
+          System.exit(0);
+        }
+      }
  	Coordinate newHead;
 	System.out.println(lastDirection);
-	String currDirection = game.getKeyManager().direction;
+	currDirection = game.getKeyManager().direction;
 	System.out.println(currDirection);
 	if(currDirection.equals("RIGHT")){
 	    newHead = new Coordinate(coordList.get(0).getXcor()+1,coordList.get(0).getYcor());
 	    coordList.add(0,newHead);
 	    coordList.remove(coordList.size() - 1);
-	    lastDirection = currDirection;
 	}
 	else if(currDirection.equals("LEFT")){
 	    newHead = new Coordinate(coordList.get(0).getXcor()-1,coordList.get(0).getYcor());
 	    coordList.add(0,newHead);
 	    coordList.remove(coordList.size() - 1);
-	    lastDirection = currDirection;
+
 	}
 	else if(currDirection.equals("UP")){
 	    newHead = new Coordinate(coordList.get(0).getXcor(),coordList.get(0).getYcor()-1);
 	    coordList.add(0,newHead);
 	    coordList.remove(coordList.size() - 1);
-	    lastDirection = currDirection;
 	}
 	else if(currDirection.equals("DOWN")){
 	    newHead = new Coordinate(coordList.get(0).getXcor(),coordList.get(0).getYcor()+1);
 	    coordList.add(0,newHead);
 	    coordList.remove(coordList.size() - 1);
-	     lastDirection = currDirection;
+
 	}
 	checkCollision();
-        
+  lastDirection = currDirection;
     }
     public void render(Graphics g) {
 	g.setColor(Color.GREEN);
@@ -100,6 +106,18 @@ public class Snake extends Entity{
         }
       }
       */
+      if (lastDirection.equals("RIGHT") && currDirection.equals("LEFT")){
+        System.exit(0);
+      }
+      if (lastDirection.equals("LEFT") && currDirection.equals("RIGHT")){
+        System.exit(0);
+      }
+      if (lastDirection.equals("UP") && currDirection.equals("DOWN")){
+        System.exit(0);
+      }
+      if (lastDirection.equals("DOWN") && currDirection.equals("UP")){
+        System.exit(0);
+      }
     	if ( xCor*10 > game.width || xCor == 0 || yCor*10 > game.height || yCor == 0){
     		System.exit(0);
     	}
