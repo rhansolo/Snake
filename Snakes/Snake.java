@@ -6,6 +6,7 @@ public class Snake extends Entity{
 
     private ArrayList<Coordinate> coordList= new ArrayList<Coordinate>();
     private Game game;
+    private String lastDirection= "RIGHT";
 
     public Snake(Game game, double x, double y) {
 	super(x, y);
@@ -24,27 +25,35 @@ public class Snake extends Entity{
 
     public void tick() {
 	Coordinate newHead;
-	if(game.getKeyManager().direction.equals("RIGHT")){
+	System.out.println(lastDirection);
+	String currDirection = game.getKeyManager().direction;
+	System.out.println(currDirection);
+	if(currDirection.equals("RIGHT")){
 	    newHead = new Coordinate(coordList.get(0).getXcor()+.5,coordList.get(0).getYcor());
 	    coordList.add(0,newHead);
 	    coordList.remove(coordList.size() - 1);
+	    lastDirection = currDirection;
 	}
-	else if(game.getKeyManager().direction.equals("LEFT")){
+	else if(currDirection.equals("LEFT")){
 	    newHead = new Coordinate(coordList.get(0).getXcor()-.5,coordList.get(0).getYcor());
 	    coordList.add(0,newHead);
 	    coordList.remove(coordList.size() - 1);
+	    lastDirection = currDirection;
 	}
-	else if(game.getKeyManager().direction.equals("UP")){
+	else if(currDirection.equals("UP")){
 	    newHead = new Coordinate(coordList.get(0).getXcor(),coordList.get(0).getYcor()-.5);
 	    coordList.add(0,newHead);
 	    coordList.remove(coordList.size() - 1);
+	    lastDirection = currDirection;
 	}
-	else if(game.getKeyManager().direction.equals("DOWN")){
+	else if(currDirection.equals("DOWN")){
 	    newHead = new Coordinate(coordList.get(0).getXcor(),coordList.get(0).getYcor()+.5);
 	    coordList.add(0,newHead);
 	    coordList.remove(coordList.size() - 1);
+	     lastDirection = currDirection;
 	}
-		checkCollision();
+	checkCollision();
+        
     }
     public void render(Graphics g) {
 	g.setColor(Color.GREEN);
