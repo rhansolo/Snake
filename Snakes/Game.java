@@ -46,6 +46,13 @@ public class Game implements Runnable {
 	State.setState(gameState);
 	
     }
+    private void initNewLife(){
+	display.getFrame().addKeyListener(keyManager);
+	
+	gameState = new GameState(this);
+	//menuState = new Menu(this);
+	State.setState(gameState);
+    }
     
     private void tick(){
 	KeyboardEvents.tick();
@@ -108,7 +115,7 @@ public class Game implements Runnable {
 	    }
 	    if (lifeDecreased){
 		lifeDecreased = false;
-		init();
+		initNewLife();
 	    }
        
 	}
