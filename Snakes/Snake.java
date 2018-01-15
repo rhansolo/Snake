@@ -8,46 +8,46 @@ public class Snake extends Entity{
     private Game game;
     private String lastDirection= "RIGHT";
 
-    public Snake(Game game, double x, double y) {
+    public Snake(Game game, int  x, int  y) {
 	super(x, y);
 	this.game = game;
-	coordList.add(0,new Coordinate(10.0,10.0));
-	coordList.add(1,new Coordinate(110.0,10.0));
-	coordList.add(2,new Coordinate(210.0,10.0));
-	coordList.add(3, new Coordinate(310.0,10.0));
-	coordList.add(4, new Coordinate(410.0,10.0));
-	coordList.add(5, new Coordinate(510.0,10.0));
-	coordList.add(6, new Coordinate(610.0,10.0));
-	coordList.add(7, new Coordinate(710.0,10.0));
+	coordList.add(0,new Coordinate(10,10));
+	coordList.add(1,new Coordinate(110,10));
+	coordList.add(2,new Coordinate(210,10));
+	coordList.add(3, new Coordinate(310,10));
+	coordList.add(4, new Coordinate(410,10));
+	coordList.add(5, new Coordinate(510,10));
+	coordList.add(6, new Coordinate(610,10));
+	coordList.add(7, new Coordinate(710,10));
 
 
     }
 
     public void tick() {
-	Coordinate newHead;
+ 	Coordinate newHead;
 	System.out.println(lastDirection);
 	String currDirection = game.getKeyManager().direction;
 	System.out.println(currDirection);
 	if(currDirection.equals("RIGHT")){
-	    newHead = new Coordinate(coordList.get(0).getXcor()+.5,coordList.get(0).getYcor());
+	    newHead = new Coordinate(coordList.get(0).getXcor()+1,coordList.get(0).getYcor());
 	    coordList.add(0,newHead);
 	    coordList.remove(coordList.size() - 1);
 	    lastDirection = currDirection;
 	}
 	else if(currDirection.equals("LEFT")){
-	    newHead = new Coordinate(coordList.get(0).getXcor()-.5,coordList.get(0).getYcor());
+	    newHead = new Coordinate(coordList.get(0).getXcor()-1,coordList.get(0).getYcor());
 	    coordList.add(0,newHead);
 	    coordList.remove(coordList.size() - 1);
 	    lastDirection = currDirection;
 	}
 	else if(currDirection.equals("UP")){
-	    newHead = new Coordinate(coordList.get(0).getXcor(),coordList.get(0).getYcor()-.5);
+	    newHead = new Coordinate(coordList.get(0).getXcor(),coordList.get(0).getYcor()-1);
 	    coordList.add(0,newHead);
 	    coordList.remove(coordList.size() - 1);
 	    lastDirection = currDirection;
 	}
 	else if(currDirection.equals("DOWN")){
-	    newHead = new Coordinate(coordList.get(0).getXcor(),coordList.get(0).getYcor()+.5);
+	    newHead = new Coordinate(coordList.get(0).getXcor(),coordList.get(0).getYcor()+1);
 	    coordList.add(0,newHead);
 	    coordList.remove(coordList.size() - 1);
 	     lastDirection = currDirection;

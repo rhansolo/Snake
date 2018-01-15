@@ -6,7 +6,7 @@ public class GameState extends State{
 
 	public GameState(Game game){
 		super(game);
-		player = new Snake(game, 100.0, 100.0);
+		player = new Snake(game, 100, 100);
     food = new Apple(game);
 	}
 
