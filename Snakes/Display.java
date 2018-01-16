@@ -31,19 +31,19 @@ public class Display {
 
 		// Textfield here
 		txtCurrentScore = new JTextField();
-		txtCurrentScore.setBackground(UIManager.getColor("CheckBox.background"));
-		txtCurrentScore.setForeground(Color.GREEN);
-		txtCurrentScore.setFont(new Font("Verdana", Font.BOLD, 38));
-		txtCurrentScore.setText("Current Score:  0");
+		txtCurrentScore.setBackground(SystemColor.window);
+		txtCurrentScore.setForeground(Color.RED);
+		txtCurrentScore.setFont(new Font("Times New Roman", Font.PLAIN, 38));
+		txtCurrentScore.setText("Current Score:");
 		txtCurrentScore.setBounds(0, 0, 726, 49);
 		frame.getContentPane().add(txtCurrentScore);
 		txtCurrentScore.setColumns(10);
 
 		txtLives = new JTextField();
-		txtLives.setForeground(Color.GREEN);
-		txtLives.setFont(new Font("Verdana", Font.BOLD, 38));
-		txtLives.setBackground(UIManager.getColor("CheckBox.background"));
-		txtLives.setText("Lives:  3");
+		txtLives.setForeground(Color.RED);
+		txtLives.setFont(new Font("Times New Roman", Font.PLAIN, 38));
+		txtLives.setBackground(SystemColor.window);
+		txtLives.setText("Lives:");
 		txtLives.setBounds(721, 0, 319, 49);
 		frame.getContentPane().add(txtLives);
 		txtLives.setColumns(10);

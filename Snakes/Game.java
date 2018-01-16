@@ -29,7 +29,7 @@ public class Game implements Runnable {
 	this.height = height;
 	this.title = title;
 	keyManager = new KeyboardEvents();
-	
+
 	lives = 3;
     }
 
@@ -121,7 +121,7 @@ public class Game implements Runnable {
 		System.out.println(tmp);
 		initNewLife();
 		display.getTxtLives().setText("Lives:" + lives);
-		
+
 		display.getTxtCurrentScore().setText("Current Score:  " + tmp);
 	    }
 
