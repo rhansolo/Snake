@@ -14,7 +14,7 @@ public class Menu extends State {
 
 	private JFrame frame;
 
-  private boolean start;
+  private boolean start = false;
 
   private Game game;
 
@@ -37,7 +37,6 @@ public class Menu extends State {
 
 	public Menu(Game game) {
     super(game);
-		initialize();
 	}
   @Override
   public void tick(){
@@ -47,21 +46,6 @@ public class Menu extends State {
   }
   @Override
   public void render(Graphics g){
-    try {
-      Menu window = new Menu(game);
-      window.frame.setVisible(true);
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-  }
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(300, 200, 1040, 720);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
 
 		JButton btnStart = new JButton("START");
 		btnStart.setForeground(Color.LIGHT_GRAY);

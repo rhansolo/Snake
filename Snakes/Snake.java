@@ -106,8 +106,8 @@ public class Snake extends Entity{
         }
       }
       */
-      
-      if ( xCor*10 > game.width || xCor == 0 || yCor*10 > game.height || yCor == 0){
+
+      if ( xCor*10 > game.width || xCor == 0 || yCor*10 > game.height-2 || yCor <= 5){
 	  game.decreaseLife();
 	  System.out.println("decreased");
     	}

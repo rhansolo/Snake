@@ -34,7 +34,7 @@ public class Display {
 		txtCurrentScore.setBackground(UIManager.getColor("CheckBox.background"));
 		txtCurrentScore.setForeground(Color.GREEN);
 		txtCurrentScore.setFont(new Font("Verdana", Font.BOLD, 38));
-		txtCurrentScore.setText("Current Score:");
+		txtCurrentScore.setText("Current Score:  0");
 		txtCurrentScore.setBounds(0, 0, 726, 49);
 		frame.getContentPane().add(txtCurrentScore);
 		txtCurrentScore.setColumns(10);
@@ -43,7 +43,7 @@ public class Display {
 		txtLives.setForeground(Color.GREEN);
 		txtLives.setFont(new Font("Verdana", Font.BOLD, 38));
 		txtLives.setBackground(UIManager.getColor("CheckBox.background"));
-		txtLives.setText("Lives:");
+		txtLives.setText("Lives:  3");
 		txtLives.setBounds(721, 0, 319, 49);
 		frame.getContentPane().add(txtLives);
 		txtLives.setColumns(10);
@@ -63,6 +63,14 @@ public class Display {
 
 	public JFrame getFrame(){
 		return frame;
+	}
+
+	public JTextField getTxtLives(){
+		return txtLives;
+	}
+
+	public JTextField getTxtCurrentScore(){
+		return txtCurrentScore;
 	}
 
 

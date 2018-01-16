@@ -1,11 +1,13 @@
 import java.awt.Graphics;
 
 public class GameState extends State{
+        private int score;
         private Snake player;
         private Apple food;
 
 	public GameState(Game game){
 		super(game);
+    score = 0;
 		player = new Snake(game, 100, 100);
 		food = new Apple(game);
 	}
@@ -17,6 +19,8 @@ public class GameState extends State{
       for (int i = 0; i < 15; i++){
         player.grow();
       }
+      score += 100;
+      game.getDisplay().getTxtCurrentScore().setText("CurentScore:   "+score);
       food = new Apple(game);
     }
     System.out.println("Test Begin");
