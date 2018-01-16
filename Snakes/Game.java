@@ -29,6 +29,7 @@ public class Game implements Runnable {
 	this.height = height;
 	this.title = title;
 	keyManager = new KeyboardEvents();
+	
 	lives = 3;
     }
 
@@ -42,15 +43,15 @@ public class Game implements Runnable {
 	display = new Display(title, width, height);
 	display.getFrame().addKeyListener(keyManager);
 
-	gameState = new GameState(this);
+	gameState = new GameState(this,0);
 	menuState = new Menu(this);
 	State.setState(gameState);
 
     }
     private void initNewLife(){
 	display.getFrame().addKeyListener(keyManager);
-
-	gameState = new GameState(this);
+	int tmp = gameState.getScore();
+	gameState = new GameState(this,tmp);
 	//menuState = new Menu(this);
 	State.setState(gameState);
     }
@@ -116,9 +117,12 @@ public class Game implements Runnable {
 	    }
 	    if (lifeDecreased){
 		lifeDecreased = false;
+		int tmp = gameState.getScore();
+		System.out.println(tmp);
 		initNewLife();
-    display.getTxtLives().setText("Lives:" + lives);
-    display.getTxtCurrentScore().setText("CurentScore:  0");
+		display.getTxtLives().setText("Lives:" + lives);
+		
+		display.getTxtCurrentScore().setText("Current Score:  " + tmp);
 	    }
 
 	}

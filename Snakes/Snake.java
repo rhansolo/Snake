@@ -33,9 +33,9 @@ public class Snake extends Entity{
 	    }
       }
  	Coordinate newHead;
-	System.out.println(lastDirection);
+	//	System.out.println(lastDirection);
 	currDirection = game.getKeyManager().direction;
-	System.out.println(currDirection);
+	//System.out.println(currDirection);
 	if(currDirection.equals("RIGHT")){
 	    newHead = new Coordinate(coordList.get(0).getXcor()+1,coordList.get(0).getYcor());
 	    coordList.add(0,newHead);

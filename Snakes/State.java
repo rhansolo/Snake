@@ -1,26 +1,26 @@
 import java.awt.Graphics;
 
-
 public abstract class State {
-
-        protected Game game;
-
-	private static State currentState = null;
-
-	public State(Game game){
-		this.game = game;
+    
+    protected Game game;
+    
+    private static State currentState = null;
+    
+    public State(Game game){
+	    this.game = game;
 	}
+    
+    public static void setState(State state){
+	currentState = state;
+    }
 
-  public static void setState(State state){
-		currentState = state;
-	}
-
-	public static State getState(){
-		return currentState;
-	}
-  
-	public abstract void tick();
-
-	public abstract void render(Graphics g);
-
+    public static State getState(){
+	return currentState;
+    }
+    public int getScore(){return 0;}
+    
+    public abstract void tick();
+    
+    public abstract void render(Graphics g);
+    
 }
