@@ -15,6 +15,8 @@ public class GameState extends State{
 	@Override
 	public void tick() {
 		player.tick();
+    score+=1;
+    game.getDisplay().getTxtCurrentScore().setText("CurentScore:   "+score);
     if (player.eat(food)){
       for (int i = 0; i < 15; i++){
         player.grow();
