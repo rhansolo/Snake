@@ -43,7 +43,7 @@ public class Display {
 		txtLives.setForeground(Color.RED);
 		txtLives.setFont(new Font("Times New Roman", Font.PLAIN, 38));
 		txtLives.setBackground(SystemColor.window);
-		txtLives.setText("Lives:");
+		txtLives.setText("Lives:  3");
 		txtLives.setBounds(721, 0, 319, 49);
 		frame.getContentPane().add(txtLives);
 		txtLives.setColumns(10);
