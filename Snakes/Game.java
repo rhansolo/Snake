@@ -11,6 +11,7 @@ public class Game implements Runnable {
     boolean running;
     int lives;
     boolean lifeDecreased;
+    boolean paused;
 
     private Thread thread;
 
@@ -62,7 +63,9 @@ public class Game implements Runnable {
 	    State.getState().tick();
 	}
     }
-
+    private void tick2(){
+	KeyboardEvents.tick();
+    }
     private void render(){
 
 	bs = display.getCanvas().getBufferStrategy();
@@ -95,40 +98,50 @@ public class Game implements Runnable {
 	long lastTime = System.nanoTime();
 	long timer = 0;
 	int ticks = 0;
-
+	
 	while(lives > 0){
-
-	    now = System.nanoTime();
-	    delta += (now - lastTime) / timePerTick;
-	    timer += now - lastTime;
-	    lastTime = now;
-
-	    if(delta >= 1){
-		tick();
-		render();
-		ticks++;
-		delta--;
+	    if (!keyManager.pause){
+		now = System.nanoTime();
+		delta += (now - lastTime) / timePerTick;
+		timer += now - lastTime;
+		lastTime = now;
+		
+		if(delta >= 1){
+		    tick();
+		    render();
+		    ticks++;
+		    delta--;
+		}
+		
+		if(timer >= 1000000000){
+		    System.out.println("Ticks and Frames: " + ticks);
+		    ticks = 0;
+		    timer = 0;
+		}
+		if (lifeDecreased){
+		    lifeDecreased = false;
+		    int tmp = gameState.getScore();
+		    System.out.println(tmp);
+		    initNewLife();
+		    display.getTxtLives().setText("Lives:" + lives);
+		    
+		    display.getTxtCurrentScore().setText("Current Score:  " + tmp);
+		    
+		}
 	    }
-
-	    if(timer >= 1000000000){
-		System.out.println("Ticks and Frames: " + ticks);
-		ticks = 0;
-		timer = 0;
+	    else{
+		now = System.nanoTime();
+		timer += now - lastTime;
+		lastTime = now;
+		delta += (now - lastTime) / timePerTick;
+		if(delta >= 1){
+		    tick2();
+		}
+		
 	    }
-	    if (lifeDecreased){
-		lifeDecreased = false;
-		int tmp = gameState.getScore();
-		System.out.println(tmp);
-		initNewLife();
-		display.getTxtLives().setText("Lives:" + lives);
-
-		display.getTxtCurrentScore().setText("Current Score:  " + tmp);
-	    }
-
 	}
 	System.exit(0);
 	end();
-
     }
     public State getGameState(){
 	return gameState;
@@ -160,7 +173,7 @@ public class Game implements Runnable {
 	}
     }
     public static void main(String[] args){
-	Game game = new Game("Snake", 1040, 720);
+	Game game = new Game("Snake", 1040, 750);
 	game.start();
     }
 
