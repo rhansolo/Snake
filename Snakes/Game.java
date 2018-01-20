@@ -46,8 +46,8 @@ public class Game implements Runnable {
 
 	gameState = new GameState(this,0);
 	menuState = new Menu(this);
-	State.setState(gameState);
-
+	//	State.setState(gameState);
+	State.setState(menuState);
     }
     private void initNewLife(){
 	display.getFrame().addKeyListener(keyManager);
