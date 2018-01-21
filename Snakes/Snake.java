@@ -6,9 +6,9 @@ public class Snake extends Entity{
 
     private ArrayList<Coordinate> coordList= new ArrayList<Coordinate>();
     private Game game;
-    private String lastDirection= "RIGHT";
     private String currDirection= "RIGHT";
 
+    // initalize snake
     public Snake(Game game, int  x, int  y) {
 	super(x, y);
 	this.game = game;
@@ -23,19 +23,13 @@ public class Snake extends Entity{
 
 
     }
-
+    //reads change in direction made by the player and changes it for the head of the snake
     public void tick() {
 	int  xCor = (int)coordList.get(0).getXcor();
     	int  yCor = (int)coordList.get(0).getYcor();
-	for (int i = 1; i < coordList.size(); i++){
-	    if ((xCor == (int)coordList.get(i).getXcor()) && (yCor == (int)coordList.get(i).getYcor())){
-		game.decreaseLife();
-	    }
-      }
+
  	Coordinate newHead;
-	//	System.out.println(lastDirection);
 	currDirection = game.getKeyManager().direction;
-	//System.out.println(currDirection);
 	if(currDirection.equals("RIGHT")){
 	    newHead = new Coordinate(coordList.get(0).getXcor()+1,coordList.get(0).getYcor());
 	    coordList.add(0,newHead);
@@ -59,17 +53,18 @@ public class Snake extends Entity{
 
 	}
 	checkCollision();
-	lastDirection = currDirection;
     }
+
+    //draws the parts of the snake together
     public void render(Graphics g) {
 	g.setColor(Color.GREEN);
-	//System.out.println(coordList.size());
 	for (Coordinate c: coordList){
 	    g.fillRect((int)c.getXcor()*10, (int)c.getYcor()*10, 10, 10);
 	}
 	g.setColor(Color.BLACK);
     }
 
+    //makes snake longer if food is eaten
     public void grow(){
       int last = coordList.size()-1;
       double dx = coordList.get(last-2).xcor - coordList.get(last-1).xcor;
@@ -78,6 +73,7 @@ public class Snake extends Entity{
       coordList.add(temp);
     }
 
+    //checks if the snake ate the food
     public boolean eat(Apple food){
       int xtemp = (int)coordList.get(0).xcor;
       int ytemp = (int)coordList.get(0).ycor;
@@ -88,29 +84,25 @@ public class Snake extends Entity{
       }
       return false;
     }
+    
     public ArrayList<Coordinate> getCoordList(){
       return this.coordList;
     }
+    
+    //checks all collision including with self and border
     public void checkCollision(){
     	int  xCor = (int)coordList.get(0).getXcor();
     	int  yCor = (int)coordList.get(0).getYcor();
-    	/*System.out.println("width: " + game.width);
-    	System.out.println(xCor);
-    	System.out.println("length : " + game.height);
-    	System.out.println(yCor);
-      */
-      // Not sure why this doesn't work !!!!!!
-      /*for (int i = 1; i < coordList.size(); i++){
-        if ((xCor == (int)coordList.get(i).getXcor()) && (yCor == (int)coordList.get(i).getYcor())){
-          System.exit(0);
-        }
-      }
-      */
 
-      if ( xCor*10 > game.width || xCor == 0 || yCor*10 > game.height-2 || yCor <= 5){
-	  game.decreaseLife();
-	  System.out.println("decreased");
+	for (int i = 1; i < coordList.size(); i++){
+	    if ((xCor == (int)coordList.get(i).getXcor()) && (yCor == (int)coordList.get(i).getYcor())){
+		game.decreaseLife();
+	    }
+	}
+	if ( xCor*10 > game.width || xCor == 0 || yCor*10 > game.height-2 || yCor <= 5){
+	    game.decreaseLife();
+	    // System.out.println("decreased");
     	}
     }
-
+    
 }
