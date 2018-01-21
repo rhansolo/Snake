@@ -46,8 +46,8 @@ public class Game implements Runnable {
 
 	gameState = new GameState(this,0);
 	menuState = new Menu(this);
-	//	State.setState(gameState);
-	State.setState(menuState);
+	State.setState(gameState);
+	//State.setState(menuState);
     }
     private void initNewLife(){
 	display.getFrame().addKeyListener(keyManager);
@@ -98,21 +98,22 @@ public class Game implements Runnable {
 	long lastTime = System.nanoTime();
 	long timer = 0;
 	int ticks = 0;
-	
+  boolean restart = true;
+  while (restart){
 	while(lives > 0){
 	    if (!keyManager.pause){
 		now = System.nanoTime();
 		delta += (now - lastTime) / timePerTick;
 		timer += now - lastTime;
 		lastTime = now;
-		
+
 		if(delta >= 1){
 		    tick();
 		    render();
 		    ticks++;
 		    delta--;
 		}
-		
+
 		if(timer >= 1000000000){
 		    System.out.println("Ticks and Frames: " + ticks);
 		    ticks = 0;
@@ -124,9 +125,9 @@ public class Game implements Runnable {
 		    System.out.println(tmp);
 		    initNewLife();
 		    display.getTxtLives().setText("Lives:" + lives);
-		    
+
 		    display.getTxtCurrentScore().setText("Current Score:  " + tmp);
-		    
+
 		}
 	    }
 	    else{
@@ -137,12 +138,27 @@ public class Game implements Runnable {
 		if(delta >= 1){
 		    tick2();
 		}
-		
+
 	    }
 	}
+  int p =JOptionPane.showConfirmDialog(null,"Try Again?","Game Over",JOptionPane.YES_NO_OPTION);
+  if (p== 1){
+    restart = false;
+  }
+  else{
+    lives = 3;
+    fps = 30;
+  	timePerTick = 1000000000 / fps;
+  	delta = 0;
+  	lastTime = System.nanoTime();
+  	timer = 0;
+  	ticks = 0;
+  }
+  }
 	System.exit(0);
 	end();
-    }
+
+}
     public State getGameState(){
 	return gameState;
     }

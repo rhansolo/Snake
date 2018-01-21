@@ -17,7 +17,7 @@ import java.awt.event.KeyEvent;
 
       }
       public void keyPressed(KeyEvent e) {
-	  if (KeyEvent.getKeyText(e.getKeyCode()) == "Space"){
+	  if (KeyEvent.getKeyText(e.getKeyCode()) == "SPACE"){
 	      if (pause){
 		  pause = false;
 	      }
@@ -27,7 +27,7 @@ import java.awt.event.KeyEvent;
 	  }
 	  else if (KeyEvent.getKeyText(e.getKeyCode()).equals("W") && !direction.equals("DOWN") ){
 	      direction = "UP";
-	      
+
 	  }
 	  else if (KeyEvent.getKeyText(e.getKeyCode()).equals("A")&& !direction.equals("RIGHT")){
 	      direction = "LEFT";

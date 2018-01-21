@@ -4,7 +4,7 @@ public class GameState extends State{
         public int score;
         private Snake player;
         private Apple food;
-    private Game game;
+        private Game game;
 
     public GameState(Game game,int score){
 		super(game);
