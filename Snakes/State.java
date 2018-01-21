@@ -18,6 +18,7 @@ public abstract class State {
 	return currentState;
     }
     public int getScore(){return 0;}
+    public void setScore(int score){};
     
     public abstract void tick();
     

@@ -98,67 +98,68 @@ public class Game implements Runnable {
 	long lastTime = System.nanoTime();
 	long timer = 0;
 	int ticks = 0;
-  boolean restart = true;
-  while (restart){
-	while(lives > 0){
-	    if (!keyManager.pause){
-		now = System.nanoTime();
-		delta += (now - lastTime) / timePerTick;
-		timer += now - lastTime;
-		lastTime = now;
-
-		if(delta >= 1){
-		    tick();
-		    render();
-		    ticks++;
-		    delta--;
+	boolean restart = true;
+	while (restart){
+	    while(lives > 0){
+		if (!keyManager.pause){
+		    now = System.nanoTime();
+		    delta += (now - lastTime) / timePerTick;
+		    timer += now - lastTime;
+		    lastTime = now;
+		    
+		    if(delta >= 1){
+			tick();
+			render();
+			ticks++;
+			delta--;
+		    }
+		    
+		    if(timer >= 1000000000){
+			System.out.println("Ticks and Frames: " + ticks);
+			ticks = 0;
+			timer = 0;
+		    }
+		    if (lifeDecreased){
+			lifeDecreased = false;
+			int tmp = gameState.getScore();
+			System.out.println(tmp);
+			initNewLife();
+			display.getTxtLives().setText("Lives:  " + lives);
+			display.getTxtCurrentScore().setText("Current Score:  " + tmp);
+			
+		    }
 		}
-
-		if(timer >= 1000000000){
-		    System.out.println("Ticks and Frames: " + ticks);
-		    ticks = 0;
-		    timer = 0;
+		else{
+		    now = System.nanoTime();
+		    timer += now - lastTime;
+		    lastTime = now;
+		    delta += (now - lastTime) / timePerTick;
+		    if(delta >= 1){
+			tick2();
+		    }
+		    
 		}
-		if (lifeDecreased){
-		    lifeDecreased = false;
-		    int tmp = gameState.getScore();
-		    System.out.println(tmp);
-		    initNewLife();
-		    display.getTxtLives().setText("Lives:" + lives);
-
-		    display.getTxtCurrentScore().setText("Current Score:  " + tmp);
-
-		}
+	    }
+	    int p =JOptionPane.showConfirmDialog(null,"Try Again?","Game Over",JOptionPane.YES_NO_OPTION);
+	    if (p== 1){
+		restart = false;
 	    }
 	    else{
-		now = System.nanoTime();
-		timer += now - lastTime;
-		lastTime = now;
-		delta += (now - lastTime) / timePerTick;
-		if(delta >= 1){
-		    tick2();
-		}
-
+		lives = 3;
+		fps = 30;
+		timePerTick = 1000000000 / fps;
+		delta = 0;
+		lastTime = System.nanoTime();
+		timer = 0;
+		ticks = 0;
+		gameState.setScore(0);
+		display.getTxtLives().setText("Lives:  " + lives);
 	    }
 	}
-  int p =JOptionPane.showConfirmDialog(null,"Try Again?","Game Over",JOptionPane.YES_NO_OPTION);
-  if (p== 1){
-    restart = false;
-  }
-  else{
-    lives = 3;
-    fps = 30;
-  	timePerTick = 1000000000 / fps;
-  	delta = 0;
-  	lastTime = System.nanoTime();
-  	timer = 0;
-  	ticks = 0;
-  }
-  }
 	System.exit(0);
 	end();
-
-}
+	
+    }
     public State getGameState(){
 	return gameState;
     }
