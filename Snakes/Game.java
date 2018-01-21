@@ -114,7 +114,6 @@ public class Game implements Runnable {
 		    }
 		    
 		    if(timer >= 1000000000){
-			System.out.println("Ticks and Frames: " + ticks);
 			ticks = 0;
 			timer = 0;
 		    }
@@ -122,7 +121,6 @@ public class Game implements Runnable {
 		    if (lifeDecreased){
 			lifeDecreased = false;
 			int tmp = gameState.getScore();
-			System.out.println(tmp);
 			initNewLife();
 			display.getTxtLives().setText("Lives:  " + lives);
 			display.getTxtCurrentScore().setText("Current Score:  " + tmp);
@@ -145,7 +143,6 @@ public class Game implements Runnable {
 	    int p =JOptionPane.showConfirmDialog(null,"Try Again?","Game Over",JOptionPane.YES_NO_OPTION);
 	    // game ends, system exits
 	    if ( p == 1){
-		System.out.println("option1");
 		restart = false;
 	    }
 	    // game restarts, scores and lives are reset back to default
