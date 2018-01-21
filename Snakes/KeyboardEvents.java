@@ -10,6 +10,7 @@ import java.awt.event.KeyEvent;
       public boolean pause;
       public KeyboardEvents(){
 	  direction = "RIGHT";
+	  pause = false;
       }
       public void keyTyped(KeyEvent e) {
       }
@@ -17,7 +18,8 @@ import java.awt.event.KeyEvent;
 
       }
       public void keyPressed(KeyEvent e) {
-	  if (KeyEvent.getKeyText(e.getKeyCode()) == "SPACE"){
+	  if (KeyEvent.getKeyText(e.getKeyCode()).equals("Space")){
+	      //System.out.println("here");
 	      if (pause){
 		  pause = false;
 	      }
@@ -38,6 +40,7 @@ import java.awt.event.KeyEvent;
   	else if (KeyEvent.getKeyText(e.getKeyCode()).equals("D") && !direction.equals("LEFT")){
 	    direction = "RIGHT";
   	}
+	  System.out.println(KeyEvent.getKeyText(e.getKeyCode()));
       }
       public void keyReleased(KeyEvent e) {
       }

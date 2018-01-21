@@ -50,7 +50,6 @@ public class Game implements Runnable {
 	//State.setState(menuState);
     }
     private void initNewLife(){
-	//display.getFrame().addKeyListener(keyManager);
 	int tmp = gameState.getScore();
 	gameState = new GameState(this,tmp);
 	//menuState = new Menu(this);
