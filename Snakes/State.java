@@ -1,5 +1,5 @@
 import java.awt.Graphics;
-
+//class for the base of Game and Menu State
 public abstract class State {
     
     protected Game game;

@@ -1,9 +1,0 @@
-public class Segment{
-    Coordinate coor;
-    public Segment(int x, int y){
-	coor.setXcor(x);
-	coor.setYcor(y);
-    }
-
-}
-	

@@ -10,6 +10,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 
+//didn't work out. class not implemented in our game
+ 
 public class Menu extends State {
 
 	private JFrame frame;

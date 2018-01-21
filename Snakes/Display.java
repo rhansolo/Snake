@@ -17,10 +17,10 @@ public class Display {
 		this.title = title;
 		this.width = width;
 		this.height = height;
-
+		
 		createDisplay();
 	}
-
+    //creates display for game
 	private void createDisplay(){
 		frame = new JFrame(title);
 		frame.setSize(width, height);
@@ -56,7 +56,7 @@ public class Display {
 		frame.add(canvas);
 		frame.pack();
 	}
-
+    //accessors
 	public Canvas getCanvas(){
 		return canvas;
 	}

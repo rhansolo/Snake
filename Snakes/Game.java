@@ -5,7 +5,7 @@ import java.awt.image.BufferStrategy;
 
 public class Game implements Runnable {
     private Display display;
-
+    //properties
     int height, width;
     String title;
     boolean running;
@@ -13,8 +13,8 @@ public class Game implements Runnable {
     boolean lifeDecreased;
     boolean paused;
 
+    //game variables
     private Thread thread;
-
     private BufferStrategy bs;
     private Graphics g;
 
@@ -33,13 +33,13 @@ public class Game implements Runnable {
 
 	lives = 3;
     }
-
+    //decrease life of the snake after collision
     public void decreaseLife(){
 	lives --;
 	lifeDecreased = true;
 	System.out.println("here");
     }
-
+    //sets screen for the beginning of the game
     private void init(){
 	display = new Display(title, width, height);
 	display.getFrame().addKeyListener(keyManager);
@@ -49,20 +49,20 @@ public class Game implements Runnable {
 	State.setState(gameState);
 	//State.setState(menuState);
     }
+    //resets screen when snake loses a life;
     private void initNewLife(){
-	//display.getFrame().addKeyListener(keyManager);
 	int tmp = gameState.getScore();
 	gameState = new GameState(this,tmp);
-	//menuState = new Menu(this);
        	State.setState(gameState);
     }
-
+    //regular tick when game is ongoing
     private void tick(){
 	KeyboardEvents.tick();
 	if (State.getState() != null){
 	    State.getState().tick();
 	}
     }
+    //keyboard still looking for space pressed by the player if game is paused
     private void tick2(){
 	KeyboardEvents.tick();
     }
@@ -86,11 +86,9 @@ public class Game implements Runnable {
 	g.dispose();
 
     }
-
+    //main method of the game
     public void run(){
-
 	init();
-
 	int fps = 30;
 	double timePerTick = 1000000000 / fps;
 	double delta = 0;
@@ -120,6 +118,7 @@ public class Game implements Runnable {
 			ticks = 0;
 			timer = 0;
 		    }
+		    //checks if the snake lost a life
 		    if (lifeDecreased){
 			lifeDecreased = false;
 			int tmp = gameState.getScore();
@@ -130,6 +129,7 @@ public class Game implements Runnable {
 			
 		    }
 		}
+		//gets here if game is paused
 		else{
 		    now = System.nanoTime();
 		    timer += now - lastTime;
@@ -141,11 +141,14 @@ public class Game implements Runnable {
 		    
 		}
 	    }
+	    //pops up when all 3 lives are used. 
 	    int p =JOptionPane.showConfirmDialog(null,"Try Again?","Game Over",JOptionPane.YES_NO_OPTION);
+	    // game ends, system exits
 	    if ( p == 1){
 		System.out.println("option1");
 		restart = false;
 	    }
+	    // game restarts, scores and lives are reset back to default
 	    else{
 		lives = 3;
 		fps = 30;
@@ -159,21 +162,21 @@ public class Game implements Runnable {
 	    }
 	}
 	System.exit(0);
-	end();
 	
     }
+    //reads the current state
     public State getGameState(){
 	return gameState;
     }
-
+    //reads user input
     public KeyboardEvents getKeyManager(){
 	return keyManager;
     }
-
+    //displays state on screen
     public Display getDisplay(){
       return display;
     }
-
+    //starts threading
     public synchronized void start() {
 	if (running)
 	    return;
@@ -181,16 +184,7 @@ public class Game implements Runnable {
 	thread = new Thread(this);
 	thread.start();
     }
-    public synchronized void end() {
-	if (!running)
-	    return;
-	running = false;
-	try {
-	    thread.join();
-	} catch (InterruptedException e) {
-	    e.printStackTrace();
-	}
-    }
+    // main class, starts the game
     public static void main(String[] args){
 	Game game = new Game("Snake", 1040, 750);
 	game.start();

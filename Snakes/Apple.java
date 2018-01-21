@@ -7,6 +7,7 @@ public class Apple {
 
     public Apple(Game game){
       Random rand = new Random();
+      // generates a randomn location for the apple to spawn
       xCor = rand.nextInt((game.width + 1));
       yCor = rand.nextInt((game.height + 1));
       while ((xCor / 10 < 1) || (xCor / 10 > game.height / 10 - 1)){
@@ -17,18 +18,13 @@ public class Apple {
       }
 	    this.game = game;
     }
-    /*public void generatePlacement(){
-	     Random rand = new Random();
-	     int xCor = rand.nextInt((game.width + 1));
-	     int yCor = rand.nextInt((game.height + 1));
-    }
-    */
-
+    //draws the apple on the screen
     public void render(Graphics g){
       g.setColor(Color.RED);
       g.fillOval(xCor,yCor,10,10);
       g.setColor(Color.BLACK);
     }
+    //accessors
     public int getXcor(){
 	     return xCor;
     }
