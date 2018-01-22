@@ -99,20 +99,20 @@ public class Game implements Runnable {
 	boolean restart = true;
 	while (restart){
 	    while(lives > 0){
-		if (!keyManager.pause){	    
+		if (!keyManager.pause){
 		    now = System.nanoTime();
 		    delta += (now - lastTime) / timePerTick;
 		    timer += now - lastTime;
 
 		    lastTime = now;
-		    
+
 		    if(delta >= 1){
 			tick();
 			render();
 			ticks++;
 			delta--;
 		    }
-		    
+
 		    if(timer >= 1000000000){
 			ticks = 0;
 			timer = 0;
@@ -124,7 +124,7 @@ public class Game implements Runnable {
 			initNewLife();
 			display.getTxtLives().setText("Lives:  " + lives);
 			display.getTxtCurrentScore().setText("Current Score:  " + tmp);
-			
+
 		    }
 		}
 		//gets here if game is paused
@@ -136,11 +136,11 @@ public class Game implements Runnable {
 		    if(delta >= 1){
 			tick2();
 		    }
-		    
+
 		}
 	    }
-	    //pops up when all 3 lives are used. 
-	    int p =JOptionPane.showConfirmDialog(null,"Try Again?","Game Over",JOptionPane.YES_NO_OPTION);
+	    //pops up when all 3 lives are used.
+	    int p =JOptionPane.showConfirmDialog(null,"Try Again?   Score: " + gameState.getScore(),"Game Over",JOptionPane.YES_NO_OPTION);
 	    // game ends, system exits
 	    if ( p == 1){
 		restart = false;
@@ -159,7 +159,7 @@ public class Game implements Runnable {
 	    }
 	}
 	System.exit(0);
-	
+
     }
     //reads the current state
     public State getGameState(){
