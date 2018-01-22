@@ -1,7 +1,6 @@
 # :snake::snake: Snake :snake::snake:
 ### Authors :smile:
-  Robin Han  
-  Steven Liu
+  Robin Han and Steven Liu
 
 ### Info :octocat:
 _Run our game!_  
