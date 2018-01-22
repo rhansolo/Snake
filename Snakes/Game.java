@@ -13,6 +13,7 @@ public class Game implements Runnable {
     int lives;
     boolean lifeDecreased;
     boolean paused;
+    private int highScore;
 
     //game variables
     private Thread thread;
@@ -25,7 +26,6 @@ public class Game implements Runnable {
 
     //Input
     private KeyboardEvents keyManager;
-
     public Game(String title, int width, int height){
 	this.width = width;
 	this.height = height;
@@ -139,10 +139,24 @@ public class Game implements Runnable {
 
 		}
 	    }
+	  
+	    int p;
+	    if (highScore < gameState.getScore()){
+		p =JOptionPane.showConfirmDialog(null,"Your score that game was: " + gameState.getScore() + " \n               HIGH SCORE!!" + "  \n                Try Again??" ,"Game Over",JOptionPane.YES_NO_OPTION);
+		highScore = gameState.getScore(); 
+	    }
+	    else if (highScore == gameState.getScore()) {
+		p =JOptionPane.showConfirmDialog(null," Your score that game was: " + gameState.getScore() + " \n You tied with the Highest Score " + " \n                 Try Again??","Game Over",JOptionPane.YES_NO_OPTION);
+	    }
+	    else{
+		p =JOptionPane.showConfirmDialog(null,"                   Your score that game was: " + gameState.getScore() + "\n   You were " + (highScore -  gameState.getScore()) + " points away from the High Score :(" + " \n                                  Try Again??","Game Over",JOptionPane.YES_NO_OPTION);
+	    }
+
+	    
 	    //pops up when all 3 lives are used.
-	    int p =JOptionPane.showConfirmDialog(null,"Try Again?   Score: " + gameState.getScore(),"Game Over",JOptionPane.YES_NO_OPTION);
+	    
 	    // game ends, system exits
-	    if ( p == 1){
+	    if (p == 1){
 		restart = false;
 	    }
 	    // game restarts, scores and lives are reset back to default
@@ -157,6 +171,7 @@ public class Game implements Runnable {
 		gameState.setScore(0);
 		display.getTxtLives().setText("Lives:  " + lives);
 	    }
+	    
 	}
 	System.exit(0);
 
