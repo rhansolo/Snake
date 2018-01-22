@@ -146,7 +146,7 @@ public class Game implements Runnable {
 		highScore = gameState.getScore(); 
 	    }
 	    else if (highScore == gameState.getScore()) {
-		p =JOptionPane.showConfirmDialog(null," Your score that game was: " + gameState.getScore() + " \n You tied with the Highest Score " + " \n                 Try Again??","Game Over",JOptionPane.YES_NO_OPTION);
+		p =JOptionPane.showConfirmDialog(null,"   Your score that game was: " + gameState.getScore() + " \n You tied with the Highest Score " + " \n                 Try Again??","Game Over",JOptionPane.YES_NO_OPTION);
 	    }
 	    else{
 		p =JOptionPane.showConfirmDialog(null,"                   Your score that game was: " + gameState.getScore() + "\n   You were " + (highScore -  gameState.getScore()) + " points away from the High Score :(" + " \n                                  Try Again??","Game Over",JOptionPane.YES_NO_OPTION);
