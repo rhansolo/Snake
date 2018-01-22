@@ -25,10 +25,9 @@ public class GameState extends State{
     // updates value of score and lives
     public void tick() {
 	player.tick();
-	score ++;
 	game.getDisplay().getTxtCurrentScore().setText("Current Score:   "+score);
 	if (player.eat(food)){
-	    for (int i = 0; i < 15; i++){
+	    for (int i = 0; i < 10; i++){
 		player.grow();
 	    }
 	    score += 100;

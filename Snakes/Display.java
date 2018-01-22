@@ -32,7 +32,7 @@ public class Display {
 		// Textfield here
 		txtCurrentScore = new JTextField();
 		txtCurrentScore.setBackground(SystemColor.window);
-		txtCurrentScore.setForeground(Color.RED);
+		txtCurrentScore.setForeground(Color.BLACK);
 		txtCurrentScore.setFont(new Font("Times New Roman", Font.PLAIN, 38));
 		txtCurrentScore.setText("Current Score:");
 		txtCurrentScore.setBounds(0, 0, 726, 49);
@@ -40,7 +40,7 @@ public class Display {
 		txtCurrentScore.setColumns(10);
 
 		txtLives = new JTextField();
-		txtLives.setForeground(Color.RED);
+		txtLives.setForeground(Color.BLACK);
 		txtLives.setFont(new Font("Times New Roman", Font.PLAIN, 38));
 		txtLives.setBackground(SystemColor.window);
 		txtLives.setText("Lives:  3");

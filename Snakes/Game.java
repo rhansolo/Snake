@@ -38,7 +38,6 @@ public class Game implements Runnable {
     public void decreaseLife(){
 	lives --;
 	lifeDecreased = true;
-	System.out.println("here");
     }
     //sets screen for the beginning of the game
     private void init(){
