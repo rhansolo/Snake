@@ -1,4 +1,4 @@
-# :snake: Snake :snake:
+# :snake::snake: Snake :snake::snake:
 ### Authors :smile:
   Robin Han  
   Steven Liu
