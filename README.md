@@ -1,10 +1,10 @@
 # :snake: Snake :snake:
-### Authors
+### Authors :smile:
   Robin Han  
   Steven Liu
 
-### Info
-Run our game!  
+### Info :octocat:
+_Run our game!_  
 1. Download the Snake directory
 2. Compile in terminal/bash shell by typing in 
 ```
@@ -14,7 +14,7 @@ javac *.java
 ```
 java Game
 ```
-How to play:  
+_How to play:_ 
 1. Control the snake using the WASD keys.  
   *Note: You cannot move in the opposite direction of the where the snake is moving!*
 2. Your objective is to eat as many "fruits" as possible, represented as the red circles that generate randomly on the map.
@@ -32,7 +32,7 @@ How to play:
 
 
 
-### Development Log
+### Development Log :thought_balloon: :thought_balloon:
 1/5/18 : Created a KeyBoard input reading class. Class reads key user is pressing.  
 1/6/18 : Created basic class and implemented threading as well as previously written Display class. Incoportaed KeyBoardEvents with the Game class.    
 1/7/18 : Modified method in KeyBoardEvents class. Pressing the spacebar closes the window. Pressing a WASD key updates the direction.    
